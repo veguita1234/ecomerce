@@ -4,6 +4,7 @@ import { Button, Card } from 'react-bootstrap';
 import { FaTrash } from 'react-icons/fa';
 import HeaderBottom from '../Principal/HeaderBottom';
 import { Link } from 'react-router-dom';
+import './Carrito.css'
 
 const CartPage = () => {
   const { cart, removeFromCart } = useCart();
@@ -25,41 +26,55 @@ const CartPage = () => {
           
       </div>
       ) : (
-        <><div style={{}}>
-          <ul style={{ listStyleType: 'none', padding: 0,border:"1px solid",width:"50vw" }}>
-            {cart.map(product => (
-              <li key={product.id} style={{ marginBottom: '15px',  alignItems: 'center' }}>
-                <img
-                  src={product.image}
-                  alt={`Imagen de ${product.name}`}
-                  style={{ width: '100px', height: 'auto', marginRight: '15px' }}
-                />
-                <span style={{ flex: 1 }}>{product.name}</span>
-                <span style={{ marginRight: '15px' }}>
-                  {product.price !== undefined ? ` - S/. ${product.price.toFixed(2)}` : ' - Precio no disponible'}
-                </span>
-                <Button variant="danger" onClick={() => removeFromCart(product.id)}>
-                  <FaTrash />
-                </Button>
-              </li>
-            ))}
-          </ul>
+        <><div className='pagina-carrito'>
+            <span className='carro'><span style={{fontWeight:"bold",color:"#333333"}}>Carro</span><span style={{fontWeight:"200",color:"#4A4A4A"}}> ( producto)</span></span> 
+            <span className='resumen'>Resumen de la orden</span>
+
+            <div className='productos'>
+            <ul style={{border:"1px solid #E0E0E0",borderRadius:"15px"}}>
+              {cart.map(product => (
+                <li key={product.id} style={{ marginBottom: '15px',  alignItems: 'center',display:"flex" ,height:"18vh"}}>
+                  <img
+                    src={product.image}
+                    alt={`Imagen de ${product.name}`}
+                    style={{ width: '100px', height: 'auto', marginRight: '15px' }}
+                  />
+                  <span style={{marginLeft:"3vw",fontWeight:"bold",fontSize:"20px",width:"10vw"}}>{product.name}</span>
+                  <span style={{ marginLeft: '10vw',width:"6vw" }}>
+                    {product.price !== undefined ? `  S/. ${product.price.toFixed(2)}` : ' - Precio no disponible'}
+                  </span>
+                  <Button style={{marginLeft:"13vw"}} variant="danger" onClick={() => removeFromCart(product.id)}>
+                    <FaTrash />
+                  </Button>
+                </li>
+              ))}
+            </ul>
+            </div>
+          
+            <Card className='pagar'>
+              <Card.Body>
+                <Card.Text style={{fontSize:"18px"}}>
+                  <span style={{display:"flex",flexDirection:"row"}}>
+                    <span style={{width:"8vw"}}>Productos({totalProducts}) </span>
+                    <span style={{width:"10vw",marginLeft:"9vw",textAlign:"end",position:"absolute"}}>S/. {totalPrice}</span>
+                  </span>
+                </Card.Text>
+                <Card.Text style={{fontSize:"18px",marginTop:"15px"}}>
+                  <span style={{display:"flex",flexDirection:"row"}}>
+                    <span style={{width:"8vw"}}>Total:({totalProducts}) </span>
+                    <span style={{width:"10vw",marginLeft:"9vw",textAlign:"end",position:"absolute"}}>S/. {totalPrice}</span>
+                  </span>
+                </Card.Text>
+                <Button style={{width:"20vw",height:"5vh",fontSize:"18px",fontWeight:"bold",marginTop:"15vh",
+                  color:"white",backgroundColor:"#313A45",borderRadius:"20px",border:"1px transparent"}} variant="primary">Comprar</Button>
+                <Link to='/ventas-corporativas'><Button style={{width:"20vw",height:"5vh",fontSize:"18px",fontWeight:"bold",marginTop:"5vh",
+                  color:"white",backgroundColor:"#313A45",borderRadius:"20px",border:"1px transparent"}} variant="primary">Cotizar</Button></Link>
+              </Card.Body>
+            </Card>
           </div>
 
           {/* Tarjeta con resumen del carrito */}
-          <Card style={{ marginTop: '20px', padding: '15px' }}>
-            <Card.Body>
-              <Card.Title>Resumen del Carrito</Card.Title>
-              <Card.Text>
-                Productos ({totalProducts}): S/. {totalPrice}
-              </Card.Text>
-              <Card.Text>
-                <strong>TOTAL: S/. {totalPrice}</strong>
-              </Card.Text>
-              <Button variant="primary">Comprar</Button>
-              <Link to='/ventas-corporativas'><Button variant="primary">Cotizar</Button></Link>
-            </Card.Body>
-          </Card>
+          
         </>
       )}
     

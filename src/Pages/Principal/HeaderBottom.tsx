@@ -13,13 +13,14 @@ const HeaderBottom: React.FC = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsSticky(window.scrollY > 6 * window.innerHeight / 100); // 6vh
+            setIsSticky(window.scrollY > window.innerHeight / 10); // Ajusta cuándo se vuelve sticky
         };
-
+    
         window.addEventListener('scroll', handleScroll);
-
+    
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+    
 
     return (
         <div className={`header-bottom ${isSticky ? 'sticky' : ''}`}>

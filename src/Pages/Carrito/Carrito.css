@@ -1,0 +1,39 @@
+.pagina-carrito {
+    display: grid;
+    grid-template-areas: 
+        "carro resumen"
+        "productos pagar";
+        gap: 1em;
+        margin-top: 5vh;
+        height: auto;
+
+    
+    .carro {
+        grid-area: "carro";
+        width: 55vw;
+        height: 5vh;
+        margin-left: 5vw;
+        font-size: 25px;
+    }
+
+    .resumen {
+        grid-area: "resumen";
+        width: 20vw;
+        height: 5vh;
+        font-weight:bold;
+        color:"#333333";
+        font-size: 25px;
+    }
+
+    .productos {
+        grid-area: "productos";
+        width: 55vw;
+        margin-left: 5vw;
+    }
+
+    .pagar {
+        grid-area: "pagar";
+        border: 1px solid #E0E0E0;
+        width: 20vw;
+    }
+}
