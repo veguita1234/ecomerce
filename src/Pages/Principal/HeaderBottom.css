@@ -1,0 +1,33 @@
+.header-bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22em;
+    height: 10vh;
+    z-index: 1000;
+    background-color: rgb(245, 242, 242);
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    transition: top 0.3s ease;
+  }
+  
+  .sticky {
+    position: fixed;
+    top: 0;
+  }
+  
+  .buscar {
+    border-radius: 15px;
+    width: 25vw;
+    height: 4vh;
+    border: 1px solid transparent;
+  }
+  
+  .iconos {
+    height: 6vh;
+    width: 17vw;
+    gap: 2em;
+    display: flex;
+    align-items: center;
+  }

@@ -1,0 +1,81 @@
+.tecnologia {
+    background-color: #E6E4C4;
+    height: 70vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .titulo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        text-align: center;
+        width: 100%;
+        display: flex;
+    }
+
+    .linea {
+        border: none;
+        border-top: 2px solid black;
+        width: 5vw; /* Ajusta el ancho de las líneas */
+        margin: 0 10px; /* Espacio entre el título y las líneas */
+    }
+}
+
+.licencias {
+    background-color: #E6E4C4;
+    height: 70vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .titulo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        text-align: center;
+        width: 100%;
+        display: flex;
+    }
+
+    .linea {
+        border: none;
+        border-top: 2px solid black;
+        width: 5vw; /* Ajusta el ancho de las líneas */
+        margin: 0 10px; /* Espacio entre el título y las líneas */
+    }
+}
+
+
+.accesorios {
+    background-color: #E6E4C4;
+    height: 70vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .titulo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        text-align: center;
+        width: 100%;
+        display: flex;
+    }
+
+    .linea {
+        border: none;
+        border-top: 2px solid black;
+        width: 5vw; /* Ajusta el ancho de las líneas */
+        margin: 0 10px; /* Espacio entre el título y las líneas */
+    }
+}
+
+
+
