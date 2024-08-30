@@ -8,7 +8,7 @@ import HeaderBottom from './HeaderBottom';
 const PaginaPrincipal: React.FC = () => {
 
     return (
-        <div style={{ height: "106vh" }}>
+        <div style={{ height: "60vh" }}>
             <header className="header">
                 <div className="header-top">
                     <img src='/' alt='logo'></img>

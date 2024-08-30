@@ -67,7 +67,7 @@ const CartPage = () => {
                 </Card.Text>
                 <Button style={{width:"20vw",height:"5vh",fontSize:"18px",fontWeight:"bold",marginTop:"15vh",
                   color:"white",backgroundColor:"#313A45",borderRadius:"20px",border:"1px transparent"}} variant="primary">Comprar</Button>
-                <Link to='/ventas-corporativas'><Button style={{width:"20vw",height:"5vh",fontSize:"18px",fontWeight:"bold",marginTop:"5vh",
+                <Link to='/cotizar'><Button style={{width:"20vw",height:"5vh",fontSize:"18px",fontWeight:"bold",marginTop:"5vh",
                   color:"white",backgroundColor:"#313A45",borderRadius:"20px",border:"1px transparent"}} variant="primary">Cotizar</Button></Link>
               </Card.Body>
             </Card>

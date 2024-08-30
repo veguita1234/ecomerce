@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './VentasCorporativas.css'
+import './Cotizar.css'
 
-const VentasCorporativas: React.FC = () => {
+const Cotizar: React.FC = () => {
 
     const [currentDate, setCurrentDate] = useState('');
 
@@ -63,4 +63,4 @@ const VentasCorporativas: React.FC = () => {
     );
 };
 
-export default VentasCorporativas;
+export default Cotizar;

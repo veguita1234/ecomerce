@@ -1,0 +1,21 @@
+.inputs {
+    width: 33vw;
+    padding: 10px 10px;
+    font-size: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    outline: none;
+    height: 2vh;
+    color: #727581;
+}
+
+.input-mensaje {
+    width: 70vw;
+    padding: 10px 10px;
+    font-size: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    outline: none;
+    height: 15vh;
+    color: #727581;
+}
