@@ -31,51 +31,52 @@ const Registrarse: React.FC = () => {
   }, []);
 
   const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-  
-    try {
-      if (!userType) {
-        setError('Tipo de usuario no seleccionado.');
-        setLoading(false);
-        return;
-      }
-  
-      const endpoint = userType === 'empresa' ? 'registerCompany' : 'register';
-      const requestBody = userType === 'empresa' ? 
-        { ...empresaData, UserName: userName, Password: password } : 
-        { Correo: correo, Name: name, LastName: lastName, UserCode: userCode, UserName: userName, Password: password };
-  
-      const response = await fetch(`http://localhost:5041/api/SeguridadUsers/${endpoint}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestBody)
-      });
-  
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('userType', userType);
-        if (userType === 'empresa') {
-          localStorage.setItem('razonSocial', empresaData.razonSocial);
-        } else {
-          localStorage.setItem('name', name || '');
-        }
-        navigate('/cotizar');
-      } else {
-        const errorData = await response.json();
-        setError(errorData.message || 'Error al registrarse. Inténtalo de nuevo.');
-      }
-    } catch (error) {
-      console.error('Error al registrarse:', error);
-      setError('Error de conexión. Inténtalo de nuevo más tarde.');
-    } finally {
+  e.preventDefault();
+  setError('');
+  setLoading(true);
+
+  try {
+    if (!userType) {
+      setError('Tipo de usuario no seleccionado.');
       setLoading(false);
+      return;
     }
-  };
+
+    const endpoint = userType === 'empresa' ? 'registerCompany' : 'register';
+    const requestBody = userType === 'empresa'
+      ? { ...empresaData, UserName: userName, Password: password }
+      : { Correo: correo, Name: name, LastName: lastName, UserCode: userCode, UserName: userName, Password: password };
+
+    const response = await fetch(`http://localhost:5041/api/SeguridadUsers/${endpoint}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestBody)
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('userType', userType);
+      if (userType === 'empresa') {
+        localStorage.setItem('razonSocial', empresaData.razonSocial);
+        navigate('/cotizar'); // Redirige a /cotizar si es una empresa
+      } else {
+        localStorage.setItem('name', name || '');
+        navigate('/'); // Redirige a la raíz si es un usuario
+      }
+    } else {
+      const errorData = await response.json();
+      setError(errorData.message || 'Error al registrarse. Inténtalo de nuevo.');
+    }
+  } catch (error) {
+    console.error('Error al registrarse:', error);
+    setError('Error de conexión. Inténtalo de nuevo más tarde.');
+  } finally {
+    setLoading(false);
+  }
+};
   
   const handleUserTypeSelection = (type: 'usuario' | 'empresa') => {
     setUserType(type);

@@ -13,7 +13,7 @@ import VentasCorporativas from './Pages/VentasCorporativas/VentaCorporativa/Vent
 import ConocenosCorporativa from './Pages/VentasCorporativas/Conocenos-VentasCorporativas/ConocenosCorporativa';
 import ContactenosCorporativa from './Pages/VentasCorporativas/Contactenos-VentasCorporativas/ContactenosCorporativa';
 import CatalogoCorporativo from './Pages/VentasCorporativas/Catalogo-VentasCorporativas/CatalogoCorporativo';
-
+import RegistroUsuario from './Pages/Registrarse/RegistroUsuario';
 
 function App() {
   return (
@@ -32,6 +32,8 @@ function App() {
           <Route path='/conocenos-ventascorporativas' element={<ConocenosCorporativa />}></Route>
           <Route path='/contactenos-ventascorporativas' element={<ContactenosCorporativa />}></Route>
           <Route path='/catalogo-ventascorporativas' element={<CatalogoCorporativo />}></Route>
+          <Route path="/registro-usuario" element={<RegistroUsuario onClose={() => {}} />} />
+          
         </Routes>
       </div>
     </Router>

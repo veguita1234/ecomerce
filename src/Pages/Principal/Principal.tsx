@@ -35,7 +35,7 @@ const PaginaPrincipal: React.FC = () => {
         <HeaderBottom />
       </header>
       <main className="main">
-        <div style={{ height: '200vh' }}>
+        <div style={{ height: '80vh' }}>
           <br /><br />
           <span style={{ fontWeight: "bold", fontSize: "4vh" }}>NUESTRAS CATEGORÍAS</span>
           <br /><br /><br/>
