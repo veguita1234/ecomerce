@@ -1,46 +1,28 @@
 .header {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  position: relative;
 }
 
 .header-top {
   background-color: #ffdd00;
-  height: 6vh;
-  z-index: 2;
+  height: 10vh;
+  border-bottom: 1px solid #ddd;
+  z-index: 1;
 }
 
 .header-bottom {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14em;
-  height: 10vh;
-  z-index: 1;
   background-color: rgb(245, 242, 242);
-  box-sizing: border-box;
-  border-bottom: 1px solid #ddd;
-  transition: top 0.3s ease;
+  z-index: 10;
+  transition: position 0.3s ease;
 }
 
-.sticky {
+.header-bottom.sticky {
   position: fixed;
   top: 0;
-}
-
-.buscar {
-  border-radius: 15px;
-  width: 25vw;
-  height: 4vh;
-  border: 1px solid transparent;
-}
-
-.iconos {
-  height: 6vh;
-  width: 28vw;
-  gap: 2em;
-  display: flex;
-  align-items: center;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .main {
@@ -48,36 +30,25 @@
   height: 70vh;
   text-align: center;
 
-
-  .contenedor-circulos {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    height: 30vh;
-    gap: 8em;
-    list-style-type: none;
-    
-
-    .circulo {
-      width: 15vw;
-      height: 30vh;
-      border-radius: 50%;
-      
-
-      .imagen-categoria {
-        width: 15vw;
-        height: 30vh;
-        border-radius: 50%;
-        
-      }
-      
-    }
-
-
-
-  }
 }
 
+.contenedor-circulos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 30vh;
+  gap: 8em;
+  list-style-type: none;
+}
 
-  
-  
+.circulo {
+  width: 15vw;
+  height: 30vh;
+  border-radius: 50%;
+}
+
+.imagen-categoria {
+  width: 15vw;
+  height: 30vh;
+  border-radius: 50%;
+}

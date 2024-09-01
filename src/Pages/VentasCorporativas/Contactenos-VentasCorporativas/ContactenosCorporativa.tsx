@@ -53,7 +53,7 @@ const ContactenosCorporativa: React.FC = () => {
                     </div>
                     <div style={{display:"flex",flexDirection:"column"}}> 
                         <span style={{fontWeight:"bold", fontSize:"13px"}}>EMPRESA / RAZÓN SOCIAL</span>
-                        <input className="inputs" placeholder='RUC' required />
+                        <input className="inputs" required />
                     </div>
                     <div style={{display:"flex",flexDirection:"column"}}>
                         <span style={{fontWeight:"bold", fontSize:"13px"}}>RUC</span>
