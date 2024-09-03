@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Registrarse.css'; 
 
 const RegistroUsuario: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [correo, setCorreo] = useState('');
@@ -60,7 +61,7 @@ const RegistroUsuario: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         localStorage.setItem('userType', userType);
         if (userType === 'empresa') {
           localStorage.setItem('razonSocial', empresaData.razonSocial);
-          navigate('/cotizar');
+          navigate('/dashboard');
         } else {
           localStorage.setItem('name', name || '');
           navigate('/');
@@ -94,7 +95,7 @@ const RegistroUsuario: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const cardStyle: React.CSSProperties = {
     height: userType === null ? '30vh' : userType === 'usuario' ? '70vh' : '95vh',
     transition: 'height 0.3s ease',
-    width: userType === null ? '25vw' : userType === 'usuario' ? '30vw' : '40vw',
+    width: userType === null ? '35vw' : userType === 'usuario' ? '30vw' : '40vw',
   };
 
   const title = userType === 'usuario'
@@ -107,9 +108,11 @@ const RegistroUsuario: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     <div className='body'>
       <div className='card' style={cardStyle}>
         <div className='login'>
-          <h2 style={{ textAlign: 'center' }}>{title}</h2>
+          {!showSelection && (
+            <h2 style={{ textAlign: 'center' }}>{title}</h2>
+          )}
           {showSelection ? (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', marginTop: '5vh' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', marginTop: '20vh'}}>
               <p>Por favor, elige una opción para registrarte.</p>
               <div style={{ display: 'flex', gap: '10px' }}>
                 <button onClick={() => handleUserTypeSelection('usuario')}>
@@ -298,15 +301,14 @@ const RegistroUsuario: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     <br /><br />
                   </>
                 )}
-
                 <button type='submit' style={{ width: '15vw' }}>
                   Registrarse
                 </button>
+                <br /><br />
+                <button onClick={handleBackToSelection} style={{ width: '15vw' }}>
+                  Volver a Selección
+                </button>
               </form>
-              <br />
-              <button onClick={handleBackToSelection} style={{ width: '15vw' }}>
-                Volver a seleccionar tipo
-              </button>
             </>
           )}
         </div>

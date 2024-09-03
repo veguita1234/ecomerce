@@ -1,0 +1,59 @@
+/* Dashboard.css */
+.dashboardContainer {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px; /* Ajusta según tu diseño */
+    background-color: blue; /* Color de fondo del sidebar */
+    padding: 20px;
+
+    position: fixed; /* Mantiene el sidebar fijo a la izquierda */
+    height: 100vh; /* Asegura que el sidebar tenga altura completa */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Asegura que el sidebar esté por encima del contenido */
+}
+
+.boton-menu {
+    width: 13vw;
+    height: 4vh;
+    background-color: #1C2536;
+    border: 1px transparent;
+    text-align: start;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    color: #9CA4AE; /* Color por defecto del texto y el ícono */
+}
+
+.boton-menu .icono-menu {
+    color: #4D5664; /* Color por defecto del ícono */
+    font-size: 15px;
+}
+
+.boton-menu .palabra-menu {
+    color: #9CA4AE; /* Color por defecto del texto */
+}
+
+.boton-menu:hover {
+    background-color: #252E3E;
+}
+
+.boton-menu:hover .icono-menu {
+    color: blue; /* Cambia el color del ícono al pasar el cursor */
+}
+
+.boton-menu:hover .palabra-menu {
+    font-weight: bold;
+    color: white; /* Cambia el color del texto al pasar el cursor */
+}
+
+
+
+.content {
+    margin-left: 250px; /* Deja espacio para el sidebar */
+    padding: 20px;
+    flex: 1;
+}

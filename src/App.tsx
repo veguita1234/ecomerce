@@ -14,13 +14,15 @@ import ConocenosCorporativa from './Pages/VentasCorporativas/Conocenos-VentasCor
 import ContactenosCorporativa from './Pages/VentasCorporativas/Contactenos-VentasCorporativas/ContactenosCorporativa';
 import CatalogoCorporativo from './Pages/VentasCorporativas/Catalogo-VentasCorporativas/CatalogoCorporativo';
 import RegistroUsuario from './Pages/Registrarse/RegistroUsuario';
+import Dashboard from './Pages/Dashboard/Dashboard';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<PaginaPrincipal />} />
+        <Route path="/" element={<PaginaPrincipal />} />
+          <Route path="/principal" element={<PaginaPrincipal />} />
           <Route path="/tecnologia" element={<Tecnologia />} />
           <Route path="/articulos-oficina" element={<ArticuloOficina />} />
           <Route path="/servicios" element={<Servicios />} />
@@ -33,6 +35,7 @@ function App() {
           <Route path='/contactenos-ventascorporativas' element={<ContactenosCorporativa />}></Route>
           <Route path='/catalogo-ventascorporativas' element={<CatalogoCorporativo />}></Route>
           <Route path="/registro-usuario" element={<RegistroUsuario onClose={() => {}} />} />
+          <Route path='/dashboard' element={<Dashboard />}></Route>
           
         </Routes>
       </div>

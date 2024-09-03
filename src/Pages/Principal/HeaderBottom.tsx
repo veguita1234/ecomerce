@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { FcSalesPerformance } from "react-icons/fc";
 import { FaTruck } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { MdSpaceDashboard } from "react-icons/md";
 import { IoPersonCircleSharp, IoMenu } from "react-icons/io5";
-import { Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { Dialog, DialogContent } from '@mui/material';
 import { useCart } from '../../Funcionalidad/CarritoCompra/CartContext';
-import RegistroUsuario from '../Registrarse/RegistroUsuario'; // Ensure correct import path
+import RegistroUsuario from '../Registrarse/RegistroUsuario';
 import IniciarSesion from '../InicioSesion/IniciarSesion';
 import './HeaderBottom.css';
 
@@ -20,6 +20,11 @@ const HeaderBottom: React.FC<HeaderBottomProps> = ({ className }) => {
   const [displayName, setDisplayName] = useState<string | null>(null);
   const [razonSocial, setRazonSocial] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
+  const [isRegister, setIsRegister] = useState(false);
+  const [dialogSize, setDialogSize] = useState<{ width: string, height: string }>({
+    width: '300px',
+    height: '400px'
+  });
 
   useEffect(() => {
     const storedName = localStorage.getItem('name');
@@ -37,14 +42,20 @@ const HeaderBottom: React.FC<HeaderBottomProps> = ({ className }) => {
     window.location.reload();
   };
 
-  const handleOpen = () => setOpen(true);
+  const handleOpen = (isRegisterPage: boolean = false) => {
+    setIsRegister(isRegisterPage);
+    if (isRegisterPage) {
+      setDialogSize({ width: '50vw', height: '40vh' });
+    } else {
+      setDialogSize({ width: '40vw', height: '60vh' });
+    }
+    setOpen(true);
+  };
+  
   const handleClose = () => setOpen(false);
 
   const handleLoginSuccess = () => {
-    // Define what should happen on successful login
-    // For now, let's just close the dialog
     handleClose();
-    // You might want to refresh or update user state here
     const storedName = localStorage.getItem('name');
     const storedRazonSocial = localStorage.getItem('razonSocial');
     setDisplayName(storedName);
@@ -53,7 +64,7 @@ const HeaderBottom: React.FC<HeaderBottomProps> = ({ className }) => {
 
   return (
     <div className={`header-bottom ${className}`}>
-      <a href="/" >
+      <a href="" >
         <span style={{ display: "flex", alignItems: "center", fontSize: "15px", fontWeight: "bold", color: "gray" }}>
           <IoMenu style={{ fontSize: "3vh" }} /> CATEGORÍAS
         </span>
@@ -61,6 +72,13 @@ const HeaderBottom: React.FC<HeaderBottomProps> = ({ className }) => {
       <input className='buscar' placeholder='¿Qué estás buscando?' />
 
       <div className="iconos">
+        {razonSocial && (
+          <Link to="/dashboard" style={{ textDecoration: "none", display: "flex", flexDirection: "row", height: "6vh", alignItems: "center", gap: "0.2em" }}>
+            <MdSpaceDashboard style={{ fontSize: "30px" }} />
+            <span style={{ fontSize: "15px", color: "green", fontWeight: "bold" }}>Dashboard</span>
+          </Link>
+        )}
+
         <FaTruck style={{ fontSize: "5vh", color: "green" }} />
         <div style={{ position: 'relative' }}>
           <Link to='/carrito'>
@@ -112,7 +130,7 @@ const HeaderBottom: React.FC<HeaderBottomProps> = ({ className }) => {
               </span>
             )}
             {!displayName && !razonSocial && (
-              <a href='#' onClick={(e) => { e.preventDefault(); handleOpen(); }} style={{ textDecoration: "none" }}>
+              <a href='#' onClick={(e) => { e.preventDefault(); handleOpen(false); }} style={{ textDecoration: "none" }}>
                 <span style={{ fontSize: "15px", color: "red" }}>
                   Inicia Sesión
                 </span>
@@ -132,25 +150,26 @@ const HeaderBottom: React.FC<HeaderBottomProps> = ({ className }) => {
       </div>
 
       {/* Modal */}
-      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
-        <DialogTitle>
-          Registro de Usuario
-          <IconButton
-            edge="end"
-            color="inherit"
-            onClick={handleClose}
-            aria-label="close"
-            style={{ position: 'absolute', right: 8, top: 8 }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          style: {
+            width: "1vw",
+            height: "1vh",
+          },
+        }}
+      >
         <DialogContent>
-          <IniciarSesion
-            onClose={handleClose}
-            onRegister={() => {}} // If necessary, handle onRegister
-            onLoginSuccess={handleLoginSuccess} // Pass the onLoginSuccess handler
-          />
+          {isRegister ? (
+            <RegistroUsuario onClose={handleClose} />
+          ) : (
+            <IniciarSesion
+              onClose={handleClose}
+              onRegister={() => handleOpen(true)} // Abre el modal de registro
+              onLoginSuccess={handleLoginSuccess} // Pasar el controlador onLoginSuccess
+            />
+          )}
         </DialogContent>
       </Dialog>
     </div>

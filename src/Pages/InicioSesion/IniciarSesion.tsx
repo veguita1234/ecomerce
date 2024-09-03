@@ -67,52 +67,54 @@ const IniciarSesion: React.FC<IniciarSesionProps> = ({ onClose, onRegister, onLo
   };
 
   return (
-    <div className='body'>
-      {showRegister ? (
-        <RegistroUsuario onClose={handleCloseRegister} />
-      ) : (
-        <div className='card'>
-          <div className='login'>
-            <h2 style={{ textAlign: 'center' }}>Iniciar Sesión</h2>
-            {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
-            {loading && <p style={{ textAlign: 'center' }}>Cargando...</p>}
-            <form onSubmit={handleLogin}>
-              <label>Usuario</label>
-              <br />
-              <input
-                type='text'
-                id='username'
-                name='username'
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-              <br /><br />
-              <label>Contraseña</label>
-              <br />
-              <input
-                type='password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                style={{ width: '15vw' }}
-              />
-              <br /><br />
-              <button
-                type='submit'
-                disabled={loading}
-                style={{ display: 'block', margin: '0 auto' }}
-              >
-                Iniciar sesión
-              </button>
-            </form>
+  <div className='body'>
+    {showRegister ? (
+      <RegistroUsuario onClose={handleCloseRegister} />
+    ) : (
+      <div className='login-container'>
+        <div className='login-box'>
+          <h2 style={{ textAlign: 'center' }}>Iniciar Sesión</h2>
+          {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
+          {loading && <p style={{ textAlign: 'center' }}>Cargando...</p>}
+          <form onSubmit={handleLogin}>
+            <label>Usuario</label>
             <br />
-            <button onClick={handleRegisterClick}>Registrarse</button>
-          </div>
+            <input
+              type='text'
+              id='username'
+              name='username'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              style={{ width: '15vw' }}
+            />
+            <br /><br />
+            <label>Contraseña</label>
+            <br />
+            <input
+              type='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              style={{ width: '15vw' }}
+            />
+            <br /><br /><br/>
+            <button
+              type='submit'
+              disabled={loading}
+              style={{ display: 'block', margin: '0 auto' }}
+            >
+              Iniciar sesión
+            </button>
+          </form>
+          <br />
+          <button style={{width:"15vw",marginLeft:"10vw"}} onClick={handleRegisterClick}>Registrarse</button>
         </div>
-      )}
-    </div>
-  );
+      </div>
+    )}
+  </div>
+);
+
 };
 
 export default IniciarSesion;
