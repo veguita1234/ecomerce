@@ -20,7 +20,8 @@ const RegistroUsuario: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     distrito: '',
     direccion: '',
     telefono: '',
-    celular: ''
+    celular: '',
+    email:''
   });
   const [showSelection, setShowSelection] = useState(true);
   const navigate = useNavigate();
@@ -61,6 +62,15 @@ const RegistroUsuario: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         localStorage.setItem('userType', userType);
         if (userType === 'empresa') {
           localStorage.setItem('razonSocial', empresaData.razonSocial);
+          localStorage.setItem('ruc',empresaData.ruc);
+          localStorage.setItem('email',empresaData.email);
+          localStorage.setItem('departamento',empresaData.departamento);
+          localStorage.setItem('provincia',empresaData.provincia);
+          localStorage.setItem('distrito',empresaData.distrito);
+          localStorage.setItem('direccion',empresaData.direccion);
+          localStorage.setItem('telefono',empresaData.telefono);
+          localStorage.setItem('celular',empresaData.celular);
+
           navigate('/dashboard');
         } else {
           localStorage.setItem('name', name || '');
@@ -112,7 +122,7 @@ const RegistroUsuario: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             <h2 style={{ textAlign: 'center' }}>{title}</h2>
           )}
           {showSelection ? (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', marginTop: '20vh'}}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px'}}>
               <p>Por favor, elige una opción para registrarte.</p>
               <div style={{ display: 'flex', gap: '10px' }}>
                 <button onClick={() => handleUserTypeSelection('usuario')}>
@@ -215,6 +225,16 @@ const RegistroUsuario: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       type='text'
                       value={empresaData.razonSocial}
                       onChange={(e) => setEmpresaData({ ...empresaData, razonSocial: e.target.value })}
+                      required
+                      style={{ width: '15vw' }}
+                    />
+                    <br /><br />
+                    <label>Email</label>
+                    <br />
+                    <input
+                      type='text'
+                      value={empresaData.email}
+                      onChange={(e) => setEmpresaData({ ...empresaData, email: e.target.value })}
                       required
                       style={{ width: '15vw' }}
                     />

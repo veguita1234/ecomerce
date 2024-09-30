@@ -1,0 +1,19 @@
+.formularioPerfil {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    width: 50vw;
+    gap: 1em;
+    
+    .labelPerfil {
+        display: flex;
+        text-align: center;
+        margin-left: 5vw;
+        align-items: center;
+        width:12vw ;
+    }
+
+    .input {
+        height: 5vh;
+    }
+}

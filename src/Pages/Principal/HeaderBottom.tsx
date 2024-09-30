@@ -21,6 +21,7 @@ const HeaderBottom: React.FC<HeaderBottomProps> = ({ className }) => {
   const [razonSocial, setRazonSocial] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
+  const iconSize = 40
   const [dialogSize, setDialogSize] = useState<{ width: string, height: string }>({
     width: '300px',
     height: '400px'
@@ -145,7 +146,10 @@ const HeaderBottom: React.FC<HeaderBottomProps> = ({ className }) => {
               </button>
             )}
           </div>
-          <div><IoPersonCircleSharp style={{ fontSize: "5vh", color: "gray" }} /></div>
+          <div style={{borderRadius:"50%",width:`${iconSize}px`,height: `${iconSize}px`, display:"flex",
+            alignItems:"center",justifyContent:"center"}}>
+              <IoPersonCircleSharp style={{ fontSize: `${iconSize}px`, color: "gray" }} />
+          </div>
         </div>
       </div>
 
@@ -157,6 +161,9 @@ const HeaderBottom: React.FC<HeaderBottomProps> = ({ className }) => {
           style: {
             width: "1vw",
             height: "1vh",
+            justifyContent:"center",
+            textAlign:"center",
+            alignItems:"center"
           },
         }}
       >

@@ -9,8 +9,8 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { MdOutlineLogin, MdErrorOutline  } from "react-icons/md";
 import { RiMenuFold3Fill } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom';
-
-
+import { IoPersonCircleSharp } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 
 // Dummy data for the chart
@@ -35,6 +35,7 @@ const rows = [
 const Sidebar: React.FC = () => {
 
   const navigate = useNavigate();
+  
   const handleButtonClick = () => {
     navigate('/principal'); 
   };
@@ -48,7 +49,7 @@ const Sidebar: React.FC = () => {
         <Typography variant="body1"><button className='boton-menu'><BsFillBarChartFill  className='icono-menu' /><span className='palabra-menu'>Overview</span></button></Typography>
         <Typography variant="body1"><button className='boton-menu'><HiUsers   className='icono-menu' /><span className='palabra-menu'>Customers</span></button></Typography>
         <Typography variant="body1"><button className='boton-menu'><BsBriefcaseFill   className='icono-menu' /><span className='palabra-menu'>Companies</span></button></Typography>
-        <Typography variant="body1"><button className='boton-menu'><FaUser   className='icono-menu' /><span className='palabra-menu'>Account</span></button></Typography>
+        {/* <Typography variant="body1"><button className='boton-menu'><FaUser   className='icono-menu' /><span className='palabra-menu'>Account</span></button></Typography> */}
         <Typography variant="body1"><button className='boton-menu'><IoSettingsSharp   className='icono-menu' /><span className='palabra-menu'>Settings</span></button></Typography>
         <Typography variant="body1"><button className='boton-menu'><MdOutlineLogin   className='icono-menu' /><span className='palabra-menu'>Login</span></button></Typography>
         <Typography variant="body1"><button className='boton-menu'><FaUserPlus   className='icono-menu' /><span className='palabra-menu'>Register</span></button></Typography>
@@ -60,10 +61,20 @@ const Sidebar: React.FC = () => {
 };
 
 const Dashboard: React.FC = () => {
+  const perfilempresa = 40;
   return (
     <div className="dashboardContainer">
       <Sidebar  />
       <div className="content">
+        <div style={{display:"flex",justifyContent:"end"}}>
+          <Link to='/perfil-empresa'>
+            <div style={{borderRadius:"50%",width:`${perfilempresa}px`,height: `${perfilempresa}px`, display:"flex",
+              alignItems:"center",justifyContent:"center"}}>
+                <IoPersonCircleSharp style={{ fontSize: `${perfilempresa}px`, color: "gray" }} />
+            </div>
+          </Link>
+          
+        </div>
         <Typography variant="h4" gutterBottom>
           Dashboard
         </Typography>

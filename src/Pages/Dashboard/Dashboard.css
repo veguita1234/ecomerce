@@ -56,4 +56,5 @@
     margin-left: 250px; /* Deja espacio para el sidebar */
     padding: 20px;
     flex: 1;
+    border: 1px solid;
 }
